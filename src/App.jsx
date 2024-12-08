@@ -4,6 +4,7 @@ import fetchHistoricalData from './script/fetchFromFirestore';
 import saveToFirestore from './script/saveToFirestore';
 import getRandomMinangQuote from './script/randomMinangQuotes';
 import connectMQTT from './script/mqttClient';
+import ParameterCard from './components/ParameterCard';
 import WeatherGraph from './components/weatherGraph';
 import BubbleChat from './components/BubbleChat';
 
@@ -96,31 +97,27 @@ const WeatherDashboard = () => {
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-green-100 rounded-xl p-6 flex flex-col items-center justify-center text-center hover:scale-105 transition-transform cursor-default">
-            <Thermometer size={48} className="text-green-700" />
-            <h2 className="text-xl font-semibold text-green-900 mb-2">Suhu</h2>
-            <p className="text-3xl font-bold text-green-800">
-              {weatherData.temperature}°C
-            </p>
-          </div>
-          <div className="bg-green-100 rounded-xl p-6 flex flex-col items-center justify-center text-center hover:scale-105 transition-transform cursor-default">
-            <Droplet size={48} className="text-green-700" />
-            <h2 className="text-xl font-semibold text-green-900 mb-2">
-              Kelembaban
-            </h2>
-            <p className="text-3xl font-bold text-green-800">
-              {weatherData.humidity}%
-            </p>
-          </div>
-          <div className="bg-green-100 rounded-xl p-6 flex flex-col items-center justify-center text-center hover:scale-105 transition-transform cursor-default">
-            <CloudRain size={48} className="text-green-700" />
-            <h2 className="text-xl font-semibold text-green-900 mb-2">
-              Curah Hujan
-            </h2>
-            <p className="text-3xl font-bold text-green-800">
-              {weatherData.rainfallStatus}
-            </p>
-          </div>
+
+          <ParameterCard
+            title="Suhu"
+            data={weatherData.temperature}
+            unit="°C"
+            icon={<Thermometer size={48} />}
+          />
+
+          <ParameterCard
+            title="Kelembaban"
+            data={weatherData.humidity}
+            unit="%"
+            icon={<Droplet size={48} />}
+          />
+
+          <ParameterCard
+            title="Curah Hujan"
+            data={weatherData.rainfallStatus}
+            unit=""
+            icon={<CloudRain size={48} />}
+          />
         </div>
 
         <div className='flex justify-center mt-4 mr-10 w-full items-center'>

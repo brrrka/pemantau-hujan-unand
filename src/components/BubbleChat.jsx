@@ -9,7 +9,7 @@ const BubbleChat = ({ data }) => {
                 </div>
                 <div className="bg-green-100 text-green-900 p-4 rounded-xl max-w-lg hover:scale-105 transition-transform cursor-default">
                     <p className="text-sm font-medium">User:</p>
-                    <p>Lai hujan diateh sanak?</p>
+                    <p className='font-sans'>Lai hujan diateh sanak?</p>
                 </div>
             </div>
 
